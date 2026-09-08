@@ -10,9 +10,12 @@ class MockVectorStore(VectorStore):
     def __init__(self):
         self.chunks = []
 
-    def add_chunks(self, chunks):
+    def add_chunks(self, chunks, embeddings=None):
         self.chunks.extend(chunks)
         return True
+
+    def search(self, query_embedding, top_k=5):
+        return []
 
 class TestDocumentPipeline(unittest.TestCase):
     def setUp(self):
